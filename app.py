@@ -237,7 +237,7 @@ def init_db():
 init_db()
 
 
-# --- 3. 비밀번호 인증 로직 (요구사항 1: 0000 고정) ---
+# --- 3. 비밀번호 인증 로직 (0000 고정) ---
 def check_password():
 
   def password_entered():
@@ -275,7 +275,7 @@ if check_password():
       " 이력을 통합 관리하는 웹 프로그램입니다."
   )
 
-  # --- 4. 사이드바 메인 메뉴 (4개 메뉴 한눈에 배치) ---
+  # --- 4. 사이드바 메인 메뉴 ---
   st.sidebar.markdown("### 📌 메인 메뉴")
   menu = st.sidebar.radio(
       "이동할 메뉴를 선택하세요:",
@@ -505,7 +505,7 @@ if check_password():
 
     with tab2:
       st.subheader("➕ 자재상태 신규 등록")
-      with tf := st.form("material_form"):
+      with st.form("material_form"):
         c1, c2 = st.columns(2)
         with c1:
           inbound_date = st.date_input("AS입고일", datetime.today())
@@ -545,12 +545,11 @@ if check_password():
             st.warning("⚠️ 건물명은 필수입니다.")
 
   # ==============================================================================
-  # [메뉴 4] 설치이력관리 (요구사항 2: 내비게이션 제목 '설치이력관리' 통일, 비고 삭제)
+  # [메뉴 4] 설치이력관리 (하부 메뉴명 통일, 비고 시트 삭제)
   # ==============================================================================
   elif menu == "🏢 설치이력관리":
     st.header("🏢 설치이력관리 (설치현황 통합 대장)")
 
-    # 요청사항 2: 하부메뉴에서 '비고' 시트 삭제 및 9개 시트만 유지
     SHEET_MENUS = [
         "오피스보드설치현황",
         "구축설치현황",
@@ -564,7 +563,6 @@ if check_password():
     ]
 
     st.sidebar.markdown("---")
-    # 요청사항 2: 하부 메뉴 내비게이션 제목을 동일하게 '설치이력관리'로 출력
     st.sidebar.markdown("### 📂 설치이력관리")
     selected_sheet = st.sidebar.radio(
         "하부 시트를 선택하세요:", SHEET_MENUS
