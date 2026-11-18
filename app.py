@@ -83,7 +83,7 @@ init_db()
 # --- 2. 비밀번호 인증 로직 ---
 def check_password():
   def password_entered():
-    if st.session_state["password"] == "우리팀비밀번호":  # 필요 시 팀 비밀번호 설정
+    if st.session_state["password"] == "0000":  # 필요 시 팀 비밀번호 설정
       st.session_state["password_correct"] = True
       del st.session_state["password"]
     else:
