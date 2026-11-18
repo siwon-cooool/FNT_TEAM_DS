@@ -78,7 +78,7 @@ def check_password():
 
   def password_entered():
     if (
-        st.session_state["password"] == "우리팀비밀번호"
+        st.session_state["password"] == "0000"
     ):  # 사용하실 팀 비밀번호로 변경하세요
       st.session_state["password_correct"] = True
       del st.session_state["password"]
